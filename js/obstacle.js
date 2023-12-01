@@ -22,7 +22,7 @@ class Obstacle {
     }
     
     move () {
-        this.top += 3;
+        this.top += 10;
         this.updatePosition()
     }
 }
