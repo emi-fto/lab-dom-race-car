@@ -7,8 +7,8 @@ class Game {
         this.height = 600;
         this.width = 500;
         this.obstacles = [];
-        this.score = 0;
-        this.lives = 3;
+        this.score = document.getElementById("score");
+        this.lives = document.getElementById("lives");
         this.gameIsOver = false;
     }
 
@@ -18,6 +18,7 @@ class Game {
         this.startScreen.style.display = "none";
         this.gameScreen.style.display = "block";
         this.gameLoop();
+        this.scor = 0;
     }
 
     gameLoop() {
@@ -35,12 +36,13 @@ class Game {
             if (this.player.didCollide(obstacle)) {
                 obstacle.element.remove();
                 this.obstacles.splice(obstacle, 1);
-                this.lives -=1;
+                this.lives.innerHTML -= 1;
                 console.log(this.lives)
                 obstacle -=1;
               } // If the obstacle is off the screen (at the bottom)
               else if (obstacle.top > this.height) {
-                this.score +=1;
+                this.scor +=1
+                this.score.innerHTML = this.scor;                           
                 console.log(this.score)
                 obstacle.element.remove();
                 this.obstacles.splice(obstacle, 1);
@@ -48,7 +50,7 @@ class Game {
             }
         });
         
-        if (this.lives === 0) {
+        if (this.lives.innerHTML === "0") {
         this.endGame();
         }
   
