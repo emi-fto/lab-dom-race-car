@@ -14,15 +14,18 @@ class Obstacle {
         this.element.style.left = `${this.left}px`;
         this.element.style.top = `${this.top}px`;
 
+        this.pixelStart = 3;
         this.gameScreen.appendChild(this.element);
     }
+    
     updatePosition() {
         this.element.style.left = `${this.left}px`;
         this.element.style.top = `${this.top}px`;
     }
-    
+        
     move () {
-        this.top += 10;
+        this.top += this.pixelStart;
+        console.log(this.pixelStart);
         this.updatePosition()
     }
 }
