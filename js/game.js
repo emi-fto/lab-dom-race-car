@@ -26,16 +26,12 @@ class Game {
             return
         }
         this.update ();
-        window.requestAnimationFrame(() => this.gameLoop())
+        window.requestAnimationFrame(() => this.gameLoop());
     }
 
     update() {
         this.player.move();
         this.obstacles.forEach((obstacle) => {
-            const intervalId = setInterval(function () {
-                if (obstacle.move) {obstacle.pixelStart +=1}
-                else {clearInterval(intervalId)}
-                } ,100);
             obstacle.move();
             if (this.player.didCollide(obstacle)) {
                 obstacle.element.remove();

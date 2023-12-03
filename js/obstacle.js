@@ -14,18 +14,19 @@ class Obstacle {
         this.element.style.left = `${this.left}px`;
         this.element.style.top = `${this.top}px`;
 
-        this.pixelStart = 3;
         this.gameScreen.appendChild(this.element);
+        this.counter = 3 + (setInterval(() => {
+            +1
+        }, 1000));
     }
     
+    move () {
+        this.top += this.counter;
+        this.updatePosition()
+    }
+
     updatePosition() {
         this.element.style.left = `${this.left}px`;
         this.element.style.top = `${this.top}px`;
-    }
-        
-    move () {
-        this.top += this.pixelStart;
-        console.log(this.pixelStart);
-        this.updatePosition()
     }
 }
